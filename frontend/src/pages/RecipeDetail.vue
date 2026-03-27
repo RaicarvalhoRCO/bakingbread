@@ -72,10 +72,10 @@ const route = useRoute()
 const { recipe, loading, error, fetchRecipeBySlug } = useRecipes()
 
 const steps = computed(() =>
-  recipe.value?.instructions
+  (recipe.value?.instructions ?? '')
     .split('\n')
     .map((s) => s.trim())
-    .filter(Boolean) ?? []
+    .filter(Boolean)
 )
 
 watch(recipe, (val) => {
