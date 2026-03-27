@@ -2,7 +2,7 @@
   <section class="home">
     <div class="home__hero">
       <h1 class="home__heading">Receitas que <em>aquecem</em> a alma</h1>
-      <p class="home__subheading">Pães artesanais, técnicas e amor em cada receita.</p>
+      <p class="home__subheading">Receitas caseiras com técnicas e amor</p>
     </div>
 
     <div v-if="loading" class="recipe-grid">
