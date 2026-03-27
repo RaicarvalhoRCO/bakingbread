@@ -31,10 +31,16 @@
       <h1 class="detail__title">{{ recipe.title }}</h1>
       <p class="detail__desc">{{ recipe.description }}</p>
 
-      <section class="detail__section">
-        <h2 class="detail__section-title">Ingredientes</h2>
+      <section
+        v-for="(group, gi) in recipe.ingredientGroups"
+        :key="gi"
+        class="detail__section"
+      >
+        <h2 class="detail__section-title">
+          {{ group.title ? `Ingredientes – ${group.title}` : 'Ingredientes' }}
+        </h2>
         <ul class="detail__ingredients">
-          <li v-for="(ingredient, i) in recipe.ingredients" :key="i">
+          <li v-for="(ingredient, i) in group.items" :key="i">
             {{ ingredient }}
           </li>
         </ul>

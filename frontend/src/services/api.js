@@ -11,12 +11,12 @@
  *
  * ─── Formato esperado de cada receita ───────────────────────────────────────
  * {
- *   title:        string
- *   slug:         string
- *   description:  string
- *   ingredients:  string[]
- *   instructions: string   (parágrafos separados por \n)
- *   imageUrl:     string
+ *   title:            string
+ *   slug:             string
+ *   description:      string
+ *   ingredientGroups: Array<{ title?: string, items: string[] }>
+ *   instructions:     string   (parágrafos separados por \n)
+ *   imageUrl:         string
  * }
  */
 
@@ -47,7 +47,10 @@ export async function getRecipeBySlug(slug) {
       title,
       "slug": slug.current,
       description,
-      ingredients,
+      ingredientGroups[] {
+        title,
+        items
+      },
       instructions,
       "imageUrl": image.asset->url
     }`,

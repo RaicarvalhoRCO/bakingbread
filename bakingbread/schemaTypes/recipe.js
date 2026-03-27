@@ -1,3 +1,5 @@
+import { IngredientGroupInput } from './IngredientGroupInput'
+
 export default {
   name: 'recipe',
   title: 'Receita',
@@ -23,10 +25,42 @@ export default {
       type: 'text'
     },
     {
-      name: 'ingredients',
+      name: 'ingredientGroups',
       title: 'Ingredientes',
       type: 'array',
-      of: [{ type: 'string' }]
+      of: [
+        {
+          type: 'object',
+          name: 'ingredientGroup',
+          title: 'Seção de ingredientes',
+          options: { modal: { type: 'inline' } },
+          components: { input: IngredientGroupInput },
+          fields: [
+            {
+              name: 'title',
+              title: 'Título da seção (ex: Massa, Recheio)',
+              type: 'string',
+              description: 'Deixe em branco para usar apenas "Ingredientes"'
+            },
+            {
+              name: 'items',
+              title: 'Ingredientes',
+              type: 'array',
+              of: [{ type: 'string' }]
+            }
+          ],
+          preview: {
+            select: { title: 'title', items: 'items' },
+            prepare({ title, items }) {
+              const count = items?.length ?? 0
+              return {
+                title: title || 'Ingredientes',
+                subtitle: `${count} ingrediente${count !== 1 ? 's' : ''}`
+              }
+            }
+          }
+        }
+      ]
     },
     {
       name: 'instructions',
