@@ -68,6 +68,19 @@ export default {
       type: 'text'
     },
     {
+      name: 'category',
+      title: 'Categoria',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Salgados',   value: 'Salgados' },
+          { title: 'Sobremesas', value: 'Sobremesas' },
+          { title: 'Drinks',     value: 'Drinks' },
+        ],
+        layout: 'radio',
+      },
+    },
+    {
       name: 'image',
       title: 'Imagem',
       type: 'image',

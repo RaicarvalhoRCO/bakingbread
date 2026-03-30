@@ -100,25 +100,161 @@ body {
 
 /* ── Home Hero ──────────────────────────────────────────────────────────────── */
 .home__hero {
-  text-align: center;
-  padding: 3.5rem 0 2.5rem;
+  /* Full-bleed: sai do container max-width e ocupa 100vw */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  /* Flush contra o header: cancela o padding-top do site-main */
+  margin-top: -2rem;
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  background: #c8870a;
+  line-height: 0;
+  box-shadow: 0 4px 24px rgba(100, 50, 0, 0.18);
 }
 
-.home__heading {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+.home__hero-img {
+  display: block;
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  object-position: center 52%;
+}
+
+/* ── Filters ────────────────────────────────────────────────────────────────── */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow);
+}
+
+.filters__search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.filters__search-icon {
+  position: absolute;
+  left: 0.875rem;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.filters__input {
+  width: 100%;
+  padding: 0.625rem 2.5rem 0.625rem 2.5rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  font-family: var(--font-ui);
+  font-size: 0.925rem;
+  color: var(--color-text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.filters__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.filters__input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(201, 114, 13, 0.15);
+}
+
+.filters__clear {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  padding: 0.25rem;
+  line-height: 1;
+  transition: color var(--transition);
+}
+
+.filters__clear:hover {
   color: var(--color-primary);
-  line-height: 1.2;
-  margin-bottom: 0.75rem;
 }
 
-.home__heading em {
-  font-style: italic;
+.filters__categories {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filters__cat-btn {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1.125rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.filters__cat-btn:hover {
+  border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
-.home__subheading {
-  color: var(--color-text-muted);
-  font-size: 1.125rem;
+.filters__cat-btn--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.filters__cat-btn--active:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ── Recipe Card Badge ───────────────────────────────────────────────────────── */
+
+.recipe-card__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.25rem 0.625rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-primary);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+}
+
+.recipe-card__badge[data-category="Drinks"] {
+  color: #1565c0;
+}
+
+.recipe-card__badge[data-category="Sobremesas"] {
+  color: #7b3f6e;
+}
+
+.recipe-card__badge[data-category="Salgados"] {
+  color: #2e6b2e;
 }
 
 /* ── Recipe Grid ────────────────────────────────────────────────────────────── */
@@ -146,6 +282,7 @@ body {
 }
 
 .recipe-card__image-wrapper {
+  position: relative;
   overflow: hidden;
   aspect-ratio: 16 / 10;
 }
@@ -410,7 +547,11 @@ body {
   }
 
   .home__hero {
-    padding: 2rem 0 1.5rem;
+    margin-top: -2rem;
+  }
+
+  .home__hero-img {
+    max-height: 300px;
   }
 
   .recipe-grid {

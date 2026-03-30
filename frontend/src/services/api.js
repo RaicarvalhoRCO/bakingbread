@@ -36,6 +36,7 @@ export async function getRecipes() {
       title,
       "slug": slug.current,
       description,
+      category,
       "imageUrl": image.asset->url
     }
   `)

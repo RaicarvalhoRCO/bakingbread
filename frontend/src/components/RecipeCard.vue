@@ -7,6 +7,9 @@
         class="recipe-card__image"
         loading="lazy"
       />
+      <span v-if="recipe.category" class="recipe-card__badge" :data-category="recipe.category">
+        {{ recipe.category }}
+      </span>
     </div>
     <div class="recipe-card__body">
       <h2 class="recipe-card__title">{{ recipe.title }}</h2>

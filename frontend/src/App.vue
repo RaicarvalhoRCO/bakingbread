@@ -1,8 +1,8 @@
 <template>
   <div class="app-wrapper">
-    <header class="site-header">
+    <!-- <header class="site-header">
       <RouterLink to="/" class="logo">🍞 Baking Bread</RouterLink>
-    </header>
+    </header> -->
 
     <main class="site-main">
       <RouterView />
