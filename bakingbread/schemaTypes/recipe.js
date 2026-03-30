@@ -1,4 +1,5 @@
 import { IngredientGroupInput } from './IngredientGroupInput'
+import { InstructionGroupInput } from './InstructionGroupInput'
 
 export default {
   name: 'recipe',
@@ -63,9 +64,42 @@ export default {
       ]
     },
     {
-      name: 'instructions',
+      name: 'instructionGroups',
       title: 'Modo de preparo',
-      type: 'text'
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'instructionGroup',
+          title: 'Seção do modo de preparo',
+          options: { modal: { type: 'inline' } },
+          components: { input: InstructionGroupInput },
+          fields: [
+            {
+              name: 'title',
+              title: 'Título da seção (ex: Massa, Recheio, Montagem)',
+              type: 'string',
+              description: 'Deixe em branco para usar apenas "Modo de preparo"'
+            },
+            {
+              name: 'steps',
+              title: 'Passos',
+              type: 'array',
+              of: [{ type: 'string' }]
+            }
+          ],
+          preview: {
+            select: { title: 'title', steps: 'steps' },
+            prepare({ title, steps }) {
+              const count = steps?.length ?? 0
+              return {
+                title: title || 'Modo de preparo',
+                subtitle: `${count} passo${count !== 1 ? 's' : ''}`
+              }
+            }
+          }
+        }
+      ]
     },
     {
       name: 'category',

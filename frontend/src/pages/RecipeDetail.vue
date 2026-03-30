@@ -46,11 +46,17 @@
         </ul>
       </section>
 
-      <section class="detail__section">
-        <h2 class="detail__section-title">Modo de preparo</h2>
+      <section
+        v-for="(group, gi) in recipe.instructionGroups"
+        :key="'ig-' + gi"
+        class="detail__section"
+      >
+        <h2 class="detail__section-title">
+          {{ group.title ? `Modo de preparo – ${group.title}` : 'Modo de preparo' }}
+        </h2>
         <div class="detail__instructions">
           <div
-            v-for="(step, i) in steps"
+            v-for="(step, i) in group.steps"
             :key="i"
             class="detail__step"
           >
@@ -64,19 +70,12 @@
 </template>
 
 <script setup>
-import { computed, onMounted, watch } from 'vue'
+import { onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { useRecipes } from '../composables/useRecipes.js'
 
 const route = useRoute()
 const { recipe, loading, error, fetchRecipeBySlug } = useRecipes()
-
-const steps = computed(() =>
-  (recipe.value?.instructions ?? '')
-    .split('\n')
-    .map((s) => s.trim())
-    .filter(Boolean)
-)
 
 watch(recipe, (val) => {
   if (val) document.title = `${val.title} — Baking Bread`

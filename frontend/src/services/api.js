@@ -52,7 +52,10 @@ export async function getRecipeBySlug(slug) {
         title,
         items
       },
-      instructions,
+      instructionGroups[] {
+        title,
+        steps
+      },
       "imageUrl": image.asset->url
     }`,
     { slug }
