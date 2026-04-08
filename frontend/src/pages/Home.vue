@@ -64,7 +64,7 @@ import { useRecipes } from '../composables/useRecipes.js'
 
 const { recipes, loading, error, fetchRecipes } = useRecipes()
 
-const CATEGORIES = ['Todos', 'Salgados', 'Sobremesas', 'Drinks']
+const CATEGORIES = ['Todos', 'Salgados', 'Doces', 'Drinks']
 const categories = CATEGORIES
 const search = ref('')
 const activeCategory = ref('Todos')
