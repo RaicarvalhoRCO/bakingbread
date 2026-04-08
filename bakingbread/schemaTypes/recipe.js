@@ -108,7 +108,7 @@ export default {
       options: {
         list: [
           { title: 'Salgados',   value: 'Salgados' },
-          { title: 'Sobremesas', value: 'Sobremesas' },
+          { title: 'doces', value: 'doces' },
           { title: 'Drinks',     value: 'Drinks' },
         ],
         layout: 'radio',

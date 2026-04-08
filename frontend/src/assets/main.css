@@ -249,7 +249,7 @@ body {
   color: #1565c0;
 }
 
-.recipe-card__badge[data-category="Sobremesas"] {
+.recipe-card__badge[data-category="doces"] {
   color: #7b3f6e;
 }
 
